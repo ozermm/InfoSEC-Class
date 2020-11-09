@@ -1,0 +1,45 @@
+
+{{> header}}
+
+
+
+<h2>This website for Information Security and Assuranc Class!</h2>
+<p>Welcome to my App</p>
+
+{{#if isDisplayName}}
+    <p>My name is {{ name }} </p>
+
+    {{else}}
+    <p>No name found!!!</p>
+{{/if}}
+
+
+
+
+{{#if isAgeEnabled}}
+    <p> I am {{age}}</p>
+
+    {{else}}
+
+    <p>No age provided!</p>
+
+
+{{/if}}
+
+
+{{calculation 50}}
+
+{{!-- This is a listing --}}
+{{#list people}}
+  {{firstName}} {{lastName}}
+{{/list}}
+
+{{> footer}}
+
+
+
+
+{{! This is just a test}}
+{{{ test  }}}
+
+{{ test }}
