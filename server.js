@@ -63,7 +63,7 @@ var session = require('express-session');
 var mysql = require('mysql');
 var MySQLStore = require('express-mysql-session')(session);
 var redirectToHTTPS = require('express-http-to-https').redirectToHTTPS;
-//var rc522 = require("rc522-rfid");
+
 var mysqlPool = mysql.createPool({
     host: connectionParameters[0].host,
     user: connectionParameters[0].user, 
@@ -109,8 +109,8 @@ app.use(bodyParser.urlencoded({limit: '10mb', extended: true})); // parse applic
 app.use(validator());
 
 app.use(session({
-    key: '~PN<b8u6h^#pK32*S.{jS2}68U$/?L7:g-InfoSec]',
-    secret: '3}GKdGh{r@}Quv>Szs!xR"YMKC2s-ar?%@j&,m',
+    key: '123456',
+    secret: '123456',
     store: sessionStore,
     resave: false,
     cookie: { maxAge: 12 * 60 * 60 * 1000 }, //cookie time for 12 hours
