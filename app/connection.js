@@ -2,7 +2,6 @@ module.exports = [
     {  
 host: "localhost",
         user: "root",
-        password: "infosec"
-		//
+        password: "infosec"		
     }
 ]
