@@ -144,9 +144,63 @@ app.all('/express-flash', function( req, res ) {
     res.redirect(301, '/');
 });
 
-app.get("/", (req, res) => {					
+const createAccountLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 1 hour window
+    max: 5, // start blocking after 5 requests
+    message:
+        "Too many request created from this IP, please try again later."
+});
+
+app.get("/", function (req, res, err) {					
 			res.render('index')
 });
+
+
+app.get('/login', createAccountLimiter, function (req, res, err) {	
+        res.render('login', {
+            //csrfToken: req.csrfToken(),
+            // messages: messages,
+            // hasErrors: messages.length > 0,
+            title: 'Login'
+        });
+    });
+
+app.post('/login', createAccountLimiter, function (req, res, next) {	
+        passport.authenticate('local-login', function (err, user, info) {
+            if (err) { return next(err); }
+			
+            if (!user) {
+                var messages = [];
+                tokenValidated = false;
+                messages.push('Invalid username or password')
+                return res.render('login', {
+                    //csrfToken: req.csrfToken(),
+                    messages: messages,
+                    hasErrors: messages.length > 0,
+                    title: 'Login'
+                });
+            }
+
+            req.logIn(user, user.role, function (err) {
+                //console.log(user);
+                if (err) { return next(err); }
+                if (user) {
+                    //return res.redirect('./welcome');
+					return res.render('welcome', {
+                    //csrfToken: req.csrfToken(),
+                    messages: messages,
+                    hasErrors: messages.length > 0,
+                    title: 'Login'
+                });
+                }
+                // Redirect if it succeeds
+
+                //return res.redirect('/cpd_dashboard');
+            });
+        })(req, res, next);
+
+    });
+
 
 // Route that creates a flash message using custom middleware
 app.all('/session-flash', function( req, res ) {
