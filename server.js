@@ -5,9 +5,9 @@ const connectionParameters = require("./app/connection");
 
 
 var options = {
-    key: fs.readFileSync('infoCSR.key'),
-    cert: fs.readFileSync('infoCSR.crt'),
-    ca: fs.readFileSync('infoCSR.ca-bundle'),
+    //key: fs.readFileSync('infoSEC.key'),
+    //cert: fs.readFileSync('infoSEC.crt'),
+    //ca: fs.readFileSync('infoSEC.ca-bundle'),
     secureOptions: constants.SSL_OP_NO_SSLv3 | constants.SSL_OP_NO_TLSv1,
 };
 
