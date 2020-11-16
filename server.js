@@ -3,14 +3,14 @@ var http = require('http');
 var https = require('https');
 const connectionParameters = require("./app/connection");
 
-/*
+
 var options = {
-    key: fs.readFileSync('peel9_net.key'),
-    cert: fs.readFileSync('peel9_net.crt'),
-    ca: fs.readFileSync('peel9_net.ca-bundle'),
+    key: fs.readFileSync('infoCSR.key'),
+    cert: fs.readFileSync('infoCSR.crt'),
+    ca: fs.readFileSync('infoCSR.ca-bundle'),
     secureOptions: constants.SSL_OP_NO_SSLv3 | constants.SSL_OP_NO_TLSv1,
 };
-*/
+
 
 var express = require('express');
 var app = express();
