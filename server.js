@@ -8,7 +8,7 @@ var options = {
     //key: fs.readFileSync('infoSEC.key'),
     //cert: fs.readFileSync('infoSEC.crt'),
     //ca: fs.readFileSync('infoSEC.ca-bundle'),
-    secureOptions: constants.SSL_OP_NO_SSLv3 | constants.SSL_OP_NO_TLSv1,
+   // secureOptions: constants.SSL_OP_NO_SSLv3 | constants.SSL_OP_NO_TLSv1,
 };
 
 
