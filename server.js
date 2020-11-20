@@ -3,6 +3,7 @@ var http = require('http');
 var https = require('https');
 const connectionParameters = require("./app/connection");
 const { constants } = require('crypto');
+var crypto = require('crypto');
 var sig = crypto.createSign('RSA-SHA256').update('psst').sign({
   key: fs.readFileSync('infoSEC.key'),
   passphrase: 'Murat2008'
