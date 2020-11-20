@@ -38,7 +38,7 @@ var bodyParser = require('body-parser');
 //const expressSanitizer = require('express-sanitizer');
 var methodOverride = require('method-override');
 var server2 = require('http').createServer(app);
-//var server = https.createServer(options,app);
+var server = https.createServer(options,app);
 
 var passport = require('passport');
 var flash = require('connect-flash');
@@ -231,11 +231,11 @@ require("express-stream-json");
 
 server2.listen(80)
 
-/*
+
 server.listen(443,()=>{
 console.log('server started')
 })
-*/
+
 
 console.log('server started'); 			// shoutout to the user
 exports = module.exports = app; 						// expose app
