@@ -1,1 +1,4 @@
 node_modules
+infoSEC.key
+infoSEC.crt
+infoSEC.ca-bundle
