@@ -4,7 +4,7 @@ var https = require('https');
 const connectionParameters = require("./app/connection");
 const { constants } = require('crypto');
 
-
+/*
 var options = {
     key: fs.readFileSync('infoSEC.key'),
     cert: fs.readFileSync('infoSEC.crt'),
@@ -12,7 +12,7 @@ var options = {
     ca: fs.readFileSync('infoSEC.ca-bundle'),
     secureOptions: constants.SSL_OP_NO_SSLv3 | constants.SSL_OP_NO_TLSv1,
 };
-
+*/
 
 var express = require('express');
 var app = express();
@@ -39,7 +39,7 @@ var bodyParser = require('body-parser');
 //const expressSanitizer = require('express-sanitizer');
 var methodOverride = require('method-override');
 var server2 = require('http').createServer(app);
-var server = https.createServer(options,app);
+//var server = https.createServer(options,app);
 
 var passport = require('passport');
 var flash = require('connect-flash');
@@ -232,12 +232,12 @@ require("express-stream-json");
 
 server2.listen(80)
 
-
+/*
 server.listen(443,()=>{
 console.log('server started')
 })
 
-
+*/
 console.log('server started'); 			// shoutout to the user
 exports = module.exports = app; 						// expose app
 //ALTER USER 'infosec'@'localhost' IDENTIFIED WITH mysql_native_password BY 'infosec'
