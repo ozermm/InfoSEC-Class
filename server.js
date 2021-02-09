@@ -41,7 +41,7 @@ var methodOverride = require('method-override');
 var server2 = require('http').createServer(app);
 //var server = https.createServer(options,app);
 
-var passport = require('passport');
+//var passport = require('passport');
 var flash = require('connect-flash');
 var validator = require('express-validator');
 var exphbs = require('express-handlebars');
@@ -62,10 +62,10 @@ const helmet = require('helmet');
 //const xss = require('xss-clean');
 
 var session = require('express-session');
-var mysql = require('mysql');
-var MySQLStore = require('express-mysql-session')(session);
+//var mysql = require('mysql');
+//var MySQLStore = require('express-mysql-session')(session);
 var redirectToHTTPS = require('express-http-to-https').redirectToHTTPS;
-
+/*
 var mysqlPool = mysql.createPool({
     host: connectionParameters[0].host,
     user: connectionParameters[0].user, 
@@ -91,7 +91,7 @@ var sessionStore = new MySQLStore({
         }
     }
 }, mysqlPool);
-
+*/
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100 // limit each IP to 100 requests per windowMs
@@ -121,8 +121,8 @@ app.use(session({
 
 app.use(helmet());
 
-app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
+//app.use(passport.initialize());
+//app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use cohasErrorsnnect-flash for flash messages stored in session
 app.use(function(req, res, next){
     res.setTimeout(120000, function(element){
@@ -230,7 +230,7 @@ app.use(limiter);
 require('./app/routes')(app); // pass our application into our routes
 require("express-stream-json");
 
-server2.listen(3000)
+server2.listen(80)
 
 /*
 server.listen(443,()=>{
