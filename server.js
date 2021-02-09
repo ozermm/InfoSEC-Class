@@ -109,7 +109,7 @@ app.use(bodyParser.json({limit: '10mb', extended: true}));
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
 app.use(bodyParser.urlencoded({limit: '10mb', extended: true})); // parse application/x-www-form-urlencoded
 app.use(validator());
-
+/*
 app.use(session({
     key: '123456',
     secret: '123456',
@@ -118,7 +118,7 @@ app.use(session({
     cookie: { maxAge: 12 * 60 * 60 * 1000 }, //cookie time for 12 hours
     saveUninitialized: true
 }));
-
+*/
 app.use(helmet());
 
 //app.use(passport.initialize());
