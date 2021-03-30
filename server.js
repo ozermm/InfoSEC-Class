@@ -226,7 +226,7 @@ app.use(function (req, res, next) {
 
 app.use(limiter);
 
-app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
+//app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
 require('./app/routes')(app); // pass our application into our routes
 require("express-stream-json");
 
