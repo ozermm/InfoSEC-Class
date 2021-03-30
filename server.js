@@ -166,7 +166,7 @@ app.get('/login', createAccountLimiter, function (req, res, err) {
             title: 'Login'
         });
     });
-
+/*
 app.post('/login', createAccountLimiter, function (req, res, next) {	
         passport.authenticate('local-login', function (err, user, info) {
             if (err) { return next(err); }
@@ -203,7 +203,7 @@ app.post('/login', createAccountLimiter, function (req, res, next) {
 
     });
 
-
+*/
 // Route that creates a flash message using custom middleware
 app.all('/session-flash', function( req, res ) {
     req.session.sessionFlash = {
@@ -217,13 +217,13 @@ app.all('/session-flash', function( req, res ) {
 app.use(methodOverride('X-HTTP-Method-Override')); // override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
 
 app.use(express.static(__dirname + '/public')); // set the static files location /public/img will be /img for users
-
+/*
 app.use(function (req, res, next) {
     res.locals.login = req.isAuthenticated();
     // res.locals.session = req.session;
     next();
 });
-
+*/
 app.use(limiter);
 
 //app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));

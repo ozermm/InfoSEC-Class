@@ -3,9 +3,9 @@ var connection = require('express-myconnection');
 var mysql = require('mysql');
 var bcrypt = require('bcrypt');
 var bodyParser = require('body-parser');
-var passport = require('passport');
+//var passport = require('passport');
 var path = require("path");
-require('../config/passport')(passport);
+//require('../config/passport')(passport);
 var urlencodedParser = bodyParser.urlencoded({ extended: true });
 async = require('async');
 var express = require('express');
@@ -62,7 +62,7 @@ module.exports = function (app) {
         text: 'Server was down and restarted. Check the error for further details!'
     };
 
-    app.use(passport.session()); // persistent login sessions      
+    //app.use(passport.session()); // persistent login sessions      
         }
 		
 app.get("/", (req, res) => {					
