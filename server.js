@@ -226,17 +226,17 @@ app.use(function (req, res, next) {
 */
 app.use(limiter);
 
-//app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
+app.use(redirectToHTTPS([/localhost:(\d{4})/], [/\/insecure/], 301));
 require('./app/routes')(app); // pass our application into our routes
 require("express-stream-json");
 
 server2.listen(80)
 
-/*
+
 server.listen(443,()=>{
 console.log('server started')
 })
-*/
+
 
 console.log('server started'); 			// shoutout to the user
 exports = module.exports = app; 						// expose app
