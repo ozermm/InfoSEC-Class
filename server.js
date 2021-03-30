@@ -232,11 +232,11 @@ require("express-stream-json");
 
 server2.listen(80)
 
-
+/*
 server.listen(443,()=>{
 console.log('server started')
 })
-
+*/
 
 console.log('server started'); 			// shoutout to the user
 exports = module.exports = app; 						// expose app
