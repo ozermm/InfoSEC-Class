@@ -1,7 +1,7 @@
 var connectionParameters = require("./connection");
 var connection = require('express-myconnection');
 var mysql = require('mysql');
-//var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt');
 var bodyParser = require('body-parser');
 //var passport = require('passport');
 var path = require("path");
@@ -106,16 +106,13 @@ app.get("/", (req, res) => {
                 //console.log(user);
                 if (err) { return next(err); }
                 if (user) {
-                    return res.redirect('./login2');
+                    return res.redirect('./users');
                 }
                
             });
         })(req, res, next);
 
     });
-
- 
- 
 
 function isLoggedIn(req, res, next) {               // Express Middleware functions
     if (req.isAuthenticated()) {

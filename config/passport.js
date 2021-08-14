@@ -28,7 +28,15 @@ module.exports = function(passport) {
 
     // used to serialize the user for the session
     passport.serializeUser(function(user, done) {
-		var sessionUser = { id: user.id, username: user.username }
+		var sessionUser = { id: user.id, 
+            username: user.username,             
+            name: user.last_name + ", " + user.first_name,           
+            role: user.role,
+            qr_code: user.qr_code, 
+            qr_code_trial: user.qr_code_trial, 
+            email: user.email, 
+            password_changed: user.password_changed
+			}
   done(null, sessionUser)
          //console.log('serializeUser: ' + user.id);
         //done(null, user.id, user.department);
@@ -93,14 +101,13 @@ module.exports = function(passport) {
                             // create the user
                             var newUserMysql = {
                                 username: username,
-                                password: bcrypt.hashSync(password, 10, null)  // use the generateHash function in our user model
+                                password: bcrypt.hashSync(req.body.password, 10, null)  // use the generateHash function in our user model
                             };
 					
 
-                            var insertQuery = "INSERT INTO users2 ( username, password, role, first_name, last_name ) values (?,?,?,?,?)";
-
+                            var insertQuery = "INSERT INTO users2 ( username, password, role, first_name, last_name, email ) values (?,?,?,?,?,?)";
                             connection.query(insertQuery, 
-							[newUserMysql.username, newUserMysql.password, req.body.role, req.body.first_name, req.body.last_name, req.session.passport.user.username], function (err, rows) {
+							[newUserMysql.username, newUserMysql.password, req.body.role, req.body.first_name, req.body.last_name, req.session.passport.user.username, req.body.email], function (err, rows) {
                                 newUserMysql.id = rows.insertId;
 
                                 return done(null, newUserMysql);

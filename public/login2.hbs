@@ -1,0 +1,68 @@
+    <style>
+        option{background-color: white;
+
+        }
+
+        .styled-select {
+            height: 25px;
+            border-radius:4px;
+            overflow: hidden;
+           width: auto;
+        }
+        html {
+            font-size: 14px;
+            overflow-y: scroll;
+            overflow-x: auto;
+        }
+        body {
+			margin-top:80px;
+            font-family: 'Oxygen', Arial, Helvetica, sans-serif;
+            font-size: 1rem;
+            text-align: left;
+            color: #666;
+            background:#333333 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAB9JREFUeNpi/P//PwM6YGLAAuCCmpqacC2MRGsHCDAA+fIHfeQbO8kAAAAASUVORK5CYII=);
+        }
+    
+    </style>
+
+<div class="container">
+
+    <div class="col-sm-4 col-sm-12 col-xs-12 col-sm-offset-4">
+
+        
+        <!-- show any messages that come back with authentication -->
+        {{#if hasErrors}}
+            <div class="alert alert-danger">
+                {{# each messages }}
+                    <p>{{this}}</p>
+                {{/each}}
+            </div>
+        {{/if}}
+
+        <!-- LOGIN FORM -->
+        <form action="login2" method="post">
+    			   <div class="form-group">
+                <label style="color:silver; font-size:18px;">Enter 6 Digit Token</label>
+                 <input type="text" class="form-control" id="token" name="token" required style="border-radius:15px;">				
+            </div>
+			
+			
+            <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+
+            <button type="submit" style="border-radius:15px; float:right;" class="btn btn-primary btn-lg">Sign In</button>
+			<button type="button" style="border-radius:15px; background-color:transparent; font-size:20px;" class="btn btn-lg"><a href="/logout"><i class="fa fa-home" aria-hidden="true"> Home</i></a></button>
+
+
+        </form>
+
+        <hr>
+<!--
+        <p>Already have an account? <a href="/login">Login</a></p>
+        <p>Or go <a href="/">home</a>.</p>
+-->
+    </div>
+
+</div>
+<script>
+$("#token").focus();
+</script>

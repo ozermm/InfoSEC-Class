@@ -1,0 +1,174 @@
+
+<!-- views/signup.ejs -->
+<!doctype html>
+<html>
+<head>
+    <title>Node Authentication</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.disableAutoFill.min.js"></script>
+	
+	
+	
+    <style>
+    label {color:whitesmoke}
+
+#register label{
+margin-right:5px;
+}
+
+#register .short{
+font-weight:bold;
+color:#FF0000;
+font-size:larger;
+}
+#register .weak{
+font-weight:bold;
+color:orange;
+font-size:larger;
+}
+#register .good{
+font-weight:bold;
+color:#2D98F3;
+font-size:larger;
+}
+#register .strong{
+font-weight:bold;
+color: limegreen;
+font-size:larger;
+}
+	
+    </style>
+</head>
+<body style="background:#262626">
+<div class="container">
+
+    <div class="col-sm-6 col-sm-offset-3" id="content">
+
+        <h1 style="color:orange"><span class="fa fa-sign-in"></span> Signup</h1>
+
+<!-- show any messages that come back with authentication -->
+        {{#if hasErrors}}
+            <div class="alert alert-danger">
+                {{# each messages }}
+                    <p>{{this}}</p>
+                {{/each}}
+            </div>
+        {{/if}}
+
+        <!-- LOGIN FORM -->
+        <form action="signup" method="post" id="register" autocomplete="false">
+		<div class="form-group">
+			<label>First Name</label>
+                <input type="text" class="form-control" name="first_name" required value='{{first_name}}'>
+            </div>
+			<div class="form-group">
+                <label>Last Name</label>
+                <input type="text" class="form-control" name="last_name" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" class="form-control" name="username" id="username" required autocomplete="off" autocomplete="new-username">
+            </div>
+            <div class="form-group">
+                <label>Password</label><span id="result"></span>
+                <input type="password" class="form-control" name="password" id="password" required autocomplete="off" autocomplete="new-password" >
+				</div>
+				<div class="form-group" style="display:nne">
+				<label>User Role</label>
+                <select type="text" class="form-control" name="role" required>
+				<option value="User">User</option>
+				<option value="Supervisor">Supervisor</option>
+				<option value="Power Admin">Power Admin</option>                
+				</select>
+            
+			 <div class="form-group" style="display:none">
+                <label>Added By</label>
+                <input type="text" class="form-control" name="added_by" value='{{user}}'>
+            </div>
+			
+            <button type="submit" class="btn btn-warning btn-lg add_cancel" style="margin-top:10px">Register</button>
+
+
+        </form>
+
+        <hr>
+
+        
+
+    </div>
+
+</div>
+<script>
+setTimeout(function(){   $('#username').val("");
+  $('#password').val("");
+    $('#username').val("");
+  }, 100);	
+setTimeout(function(){   $('#username').val("");
+  $('#password').val("");
+    $('#username').val("");
+  }, 500);	
+  setTimeout(function(){   $('#username').val("");
+  $('#password').val("");
+    $('#username').val("");
+  }, 1000);
+setTimeout(function(){   $('#username').val("");
+  $('#password').val("");
+    $('#username').val("");
+	
+$(document).ready(function() {
+$('#password').keyup(function() {
+//alert("hey");
+$('#result').html(checkStrength($('#password').val()))
+})
+function checkStrength(password) {
+var strength = 0
+if (password.length < 6) {
+$('#result').removeClass()
+$('#result').addClass('short')
+return 'Too short'
+}
+if (password.length > 7) strength += 1
+// If password contains both lower and uppercase characters, increase strength value.
+if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) strength += 1
+// If it has numbers and characters, increase strength value.
+if (password.match(/([a-zA-Z])/) && password.match(/([0-9])/)) strength += 1
+// If it has one special character, increase strength value.
+if (password.match(/([!,%,&,@,#,$,^,*,?,_,~])/)) strength += 1
+// If it has two special characters, increase strength value.
+if (password.match(/(.*[!,%,&,@,#,$,^,*,?,_,~].*[!,%,&,@,#,$,^,*,?,_,~])/)) strength += 1
+// Calculated strength value, we can return messages
+// If value is less than 2
+if (strength < 2) {
+$('#result').removeClass()
+$('#result').addClass('weak')
+return 'Weak'
+} else if (strength == 2) {
+$('#result').removeClass()
+$('#result').addClass('good')
+return 'Good'
+} else {
+$('#result').removeClass()
+$('#result').addClass('strong')
+return 'Strong'
+}
+}
+}); 
+ //$('#signup_form').attr('autocomplete', 'off');	
+	
+	
+	
+  }, 2000);
+
+  var data = '{{department_list}}'.split(",");
+  var data2 = '{{department_path}}'.split(",");
+ 
+					const department_select = $("#department");                 
+                    department_select.empty();
+  for (i = 0; i < data.length; i++) {
+					department_select.append('<option value="' + data2[i] + '">' + data[i] + '</option>');
+                    }
+
+</script>

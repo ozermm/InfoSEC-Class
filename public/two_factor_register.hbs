@@ -1,0 +1,152 @@
+<style>
+    option {
+        background-color: white;
+
+    }
+
+
+    .styled-select {
+        height: 25px;
+        border-radius: 4px;
+        overflow: hidden;
+        width: auto;
+    }
+
+    html {
+        font-size: 14px;
+        overflow-y: scroll;
+        overflow-x: auto;
+    }
+
+    body {
+        margin-top: 80px;
+        font-family: 'Oxygen', Arial, Helvetica, sans-serif;
+        font-size: 1rem;
+        text-align: left;
+        color: #666;
+        background: #333333 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAB9JREFUeNpi/P//PwM6YGLAAuCCmpqacC2MRGsHCDAA+fIHfeQbO8kAAAAASUVORK5CYII=);
+    }
+
+    .col-xs-10 {
+        background-color: transparent !important;
+    }
+
+    @media print {
+        body {
+            background-color: white;
+        }
+
+        .no-print,
+        .no-print * {
+            display: none !important;
+        }
+    }
+</style>
+<div class="container" style="width:80%;">
+
+    <div class="col-sm-6 col-sm-12 col-xs-12 col-sm-offset-3" id="qr_code_auth">
+
+        <h3 style="color:whitesmoke">You have only 3 chances to activate <u> your </u>Two Factor Authentication (2FA).
+            Failing to activate within 3 login trials will disable your access to Peel9.</h3>
+
+        <!-- show any messages that come back with authentication -->
+        {{#if hasErrors}}
+        <div class="alert alert-danger">
+            {{# each messages }}
+            <p>{{this}}</p>
+            {{/each}}
+        </div>
+        {{/if}}
+
+        <!-- LOGIN FORM -->
+        <form action="login2" method="post">
+
+            <div class="form-group" class="col-sm-6 col-sm-6 col-xs-12">
+                <img src="{{qr_code}}"> </img>
+            </div>
+            <div class="form-group" class="col-sm-6 col-sm-6 col-xs-12">
+                <small style="color:whitesmoke">- Keep this QR-Code in a safe place so that you can use it with
+                    different devices. If you lose your QR-Code, contact with your Admin.
+                    </br>
+                    - Download <u>"Google Authenticator"</u> from App Store (either Android or Apple) and scan the
+                    qr-code for the system set up.
+                    </br>- When you are done, click <u>"Activate 2FA"</u> to finalize the activation process. </br>
+					<span style="color:silver; font-size:14px">QR-CODE: {{secret}} </span>
+                </small>
+            </div>
+
+            <input type="hidden" id="kodum" name="kodum" value="{{ secret }}">
+        </form>
+        <button type="text" id="kaydet_beni" style="border-radius:15px; float:right;"
+            class="btn btn-primary btn-lg no-print">Activate 2FA</button>
+        <button type="text" id="kaydet_beni2" style="border-radius:15px; float:right;"
+            class="btn btn-success btn-lg no-print">Continue Signin</button>
+        <button type="text" id="yazdir" style="border-radius:15px; float:right;"
+            class="btn btn-default btn-lg no-print">Print</button>
+        <button type="button" style="border-radius:15px; background-color:transparent; font-size:20px;"
+            class="btn btn-lg no-print"><a href="/"><i class="fa fa-home" aria-hidden="true"> Home</i></a></button>
+
+
+        <hr>
+        <!--
+        <p>Already have an account? <a href="/login">Login</a></p>
+        <p>Or go <a href="/">home</a>.</p>
+-->
+    </div>
+
+</div>
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script src="../js/jquery-confirm.js"></script>
+<script>
+    console.log('{{qr_code_check}}');
+    //if('{{qr_code_check}}'!=null){
+    //$('#qr_code_auth').hide();
+    //$('body').text('You already activated your 2FA. If you have any question, contact with your admin.');
+    //}
+    $("#kaydet_beni2").hide();
+    $("#yazdir").on('click', function () { print(); });
+    var sakli = $("#kodum").val();
+    $("#kaydet_beni").on('click',function () {
+	      $.ajax({ // Send the username val to available.php
+            type: 'POST',
+            data: {
+                kodum: sakli
+            },
+            url: 'qr_code_register',
+            success: function (data) { // Get the result
+                if (data.affectedRows == 1) {
+                    $.alert('You succesfully activated your 2FA!');
+                    $("#kaydet_beni").hide();
+                    $("#kaydet_beni2").show();
+                }
+
+
+            }
+        });
+    });
+
+    $("#kaydet_beni2").click(function () {
+        $.confirm({
+            title: '!!!!!',
+            content: 'Confirm to continue!',
+            title: '',
+            content: "Please make sure that you printed/copied the QR-Code and also succesfully activiated Google Authenticator on your phone. </br> Failing to activate 2FA on your phone will disable any user to access Peel9 data systems.",
+            buttons: {
+                confirm: function (ev) {
+                    window.location = './logout2';
+
+                },
+                cancel: function () {
+                    //  $.alert('Canceled!');					
+
+
+                }
+            }
+
+
+
+        });
+    });
+	
+	
+</script>

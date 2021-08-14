@@ -1,0 +1,865 @@
+<style>
+/* Datatable ------------------------------------------------------------------------------------ */
+
+.dataTables_length {
+    height: 30px;
+    float: left;
+    margin-bottom: 13px;
+}
+
+.dataTables_length label {
+    font-weight: normal;
+    color: #ededed;
+}
+
+.panelTable .dataTables_length label {
+    color: #262626;
+}
+
+.dataTables_length select {
+    width: 80px;
+    height: 30px;
+    top: 0;
+    right: 0;
+    background-color: #fff;
+    color: #666;
+    padding: 0 10px 0 10px;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    margin: 0;
+}
+
+.dataTables_length:after {
+    float: right;
+    position: relative;
+    right: 30px;
+    width: 30px;
+    height: 30px;
+    background-color: #444;
+    font-family: 'FontAwesome', Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    line-height: 31px;
+    font-size: 1.2rem;
+    text-align: center;
+    color: #ededed;
+    content: '\f107';
+    pointer-events: none;
+    -webkit-border-top-right-radius: 6px;
+    -webkit-border-bottom-right-radius: 6px;
+    -moz-border-radius-topright: 6px;
+    -moz-border-radius-bottomright: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.dataTables_length select::-ms-expand {
+    display: none;
+}
+
+.dataTables_filter {
+    float: right;
+    margin-bottom: 9px;
+}
+
+.dataTables_filter label {
+    color: #ededed;
+    line-height: 30px;
+    font-weight: normal;
+}
+
+.panelTable .dataTables_filter label {
+    color: #262626;
+}
+
+.dataTables_filter input {
+    width: 200px;
+    height: 30px;
+    display: inline-block;
+    background-color: #fff;
+    line-height: 30px;
+    color: #666;
+    padding: 0 0 0 10px;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    margin: 0 0 0 10px;
+}
+
+.dataTables_filter input:focus {
+    background-color: #ffd;
+    color: black;
+}
+
+div.dataTables_wrapper div.dataTables_processing {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0;
+    cursor: wait;
+    pointer-events: all;
+    z-index: 90000000;
+    color: transparent;
+}
+
+table.dataTable thead>tr>th.sorting_asc,
+table.dataTable thead>tr>th.sorting_desc,
+table.dataTable thead>tr>th.sorting,
+table.dataTable thead>tr>td.sorting_asc,
+table.dataTable thead>tr>td.sorting_desc,
+table.dataTable thead>tr>td.sorting {
+    padding-right: 30px
+}
+
+table.dataTable thead>tr>th:active,
+table.dataTable thead>tr>td:active {
+    outline: none
+}
+
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc,
+table.dataTable thead .sorting_asc_disabled,
+table.dataTable thead .sorting_desc_disabled {
+    cursor: pointer;
+    position: relative
+}
+
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:after {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    display: block;
+    font-family: 'Glyphicons Halflings';
+    opacity: 0.5;
+}
+
+table.dataTable thead .sorting:after {
+    opacity: 0.2;
+    content: "\e150"
+}
+
+table.dataTable thead .sorting_asc:after {
+    content: "\e155"
+}
+
+table.dataTable thead .sorting_desc:after {
+    content: "\e156"
+}
+
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:after {
+    color: #eee
+}
+
+div.dataTables_scrollHead table.dataTable {
+    margin-bottom: 0 !important
+}
+
+div.dataTables_scrollBody>table {
+    border-top: none;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important
+}
+
+div.dataTables_scrollBody>table>thead .sorting:after,
+div.dataTables_scrollBody>table>thead .sorting_asc:after,
+div.dataTables_scrollBody>table>thead .sorting_desc:after {
+    display: none
+}
+
+div.dataTables_scrollBody>table>tbody>tr:first-child>th,
+div.dataTables_scrollBody>table>tbody>tr:first-child>td {
+    border-top: none
+}
+
+div.dataTables_scrollFoot>.dataTables_scrollFootInner {
+    box-sizing: content-box
+}
+
+div.dataTables_scrollFoot>.dataTables_scrollFootInner>table {
+    margin-top: 0 !important;
+    border-top: none
+}
+
+@media screen and (max-width: 767px) {
+    div.dataTables_wrapper div.dataTables_length,
+    div.dataTables_wrapper div.dataTables_filter,
+    div.dataTables_wrapper div.dataTables_info,
+    div.dataTables_wrapper div.dataTables_paginate {
+        text-align: center
+    }
+}
+
+table.dataTable.table-condensed>thead>tr>th {
+    padding-right: 20px
+}
+
+table.dataTable.table-condensed .sorting:after,
+table.dataTable.table-condensed .sorting_asc:after,
+table.dataTable.table-condensed .sorting_desc:after {
+    top: 6px;
+    right: 6px
+}
+
+.dataTables_paginate {
+    float: left;
+    margin-top: 13px;
+}
+
+.dataTables_paginate a {
+    width: 40px;
+    height: 30px;
+    float: left;
+    background: #ededed;
+    font-weight: normal;
+    line-height: 29px;
+    text-align: center;
+    color: #262626;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin: 0 10px 0 0;
+    border: 1px solid #26262650;
+}
+
+.dataTables_paginate a.current,
+.dataTables_paginate a:hover,
+.dataTables_paginate a:active,
+.dataTables_paginate a:focus {
+    background-color: rgba(68, 68, 68, 0.70);
+    color: #ededed;
+}
+
+.dataTables_paginate a.previous,
+.dataTables_paginate a.next {
+    font-family: 'FontAwesome', Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+    line-height: 30px;
+}
+
+.dataTables_paginate a.previous:before {
+    content: '\f104';
+}
+
+.dataTables_paginate a.next:before {
+    content: '\f105';
+}
+
+.dataTables_info {
+    float: right;
+    line-height: 30px;
+    margin-top: 13px;
+}
+
+table.datatable {
+    width: 100% !important;
+    line-height: 1.4rem;
+    border: solid 1px #26262632;
+}
+
+table.datatable th,
+table.datatable td {
+    background-color: #fff;
+    padding: 2px 5px 2px 5px;
+    max-height: 35px;
+    /* or whatever height you need to make them all consistent */
+}
+
+table.datatable td {
+    border: solid 1px #8f8f8fa6;
+}
+
+table.datatable th {
+    background-color: rgba(77, 77, 77, 1);
+    font-weight: bold;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-shadow: 0 0 3px black;
+    color: #EDEDED;
+    padding-top: 15px;
+    padding-bottom: 14px;
+}
+
+
+/* {
+        {
+            !-- table.datatable th:last-child {
+            border-top-right-radius: 10px;
+        }
+
+        table.datatable th:first-child {
+            border-top-left-radius: 10px;
+        }
+
+        --
+    } 
+}*/
+
+table.datatable thead th.sorting,
+table.datatable thead th.sorting_desc,
+table.datatable thead th.sorting_asc {
+    cursor: pointer;
+}
+
+table.datatable thead th.sorting:active,
+table.datatable thead th.sorting_desc:active,
+table.datatable thead th.sorting_asc:active {
+    background-color: #262626;
+}
+
+table.datatable tbody tr:nth-child(even) td {
+    background-color: #efefef;
+}
+
+table.datatable tbody tr td.assignedTask {
+    background-color: #ffcccc;
+}
+
+table.datatable tbody tr td.assignedTask2 {
+    background-color: #ffc299;
+}
+
+table.datatable tbody tr td.dailyLog {
+    background-color: #ffc;
+}
+
+table.datatable tbody tr td.completedTask {
+    background-color: #ADEBAD;
+}
+
+table.datatable tbody tr td.cfs_comment {
+    background-color: #ffffb3;
+}
+
+table.datatable tbody tr td.unknown {
+    background-color: #ffcccc;
+}
+
+table.datatable tbody tr td.save-progress {
+    background-color: #b3b3b3;
+}
+
+table.datatable tbody tr td.court-green {
+    background-color: #e6fff2;
+}
+
+table.datatable tbody tr td.court-pink {
+    background-color: #ffe6ff;
+}
+
+table.datatable tbody tr:hover th,
+table.datatable tbody tr:hover td {
+    background-color: #ffd;
+}
+
+table.datatable tbody tr:hover td.dataTables_empty {
+    background-color: #fff;
+}
+
+table.datatable tbody td.company_name {
+    width: 100%;
+}
+
+table.datatable tbody td.integer {
+    text-align: right;
+    white-space: nowrap;
+}
+
+table.datatable tbody td.nowrap {
+    white-space: nowrap;
+}
+
+table.datatable.nowrap th,
+table.datatable.nowrap td {
+    white-space: nowrap
+}
+
+table.datatable tbody td.functions .function_buttons {
+    width: 70px;
+    height: 30px;
+    margin: 0 auto 0 auto;
+}
+
+table.datatable tbody td.functions .function_buttons li {
+    float: left;
+    padding: 0 10px 0 0;
+}
+
+table.datatable tbody td.functions .function_buttons li.function_delete {
+    padding: 0;
+}
+
+table.datatable tbody td.functions .function_buttons a {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    background-color: #999;
+    font-family: 'FontAwesome', Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    line-height: 29px;
+    text-align: center;
+    color: #fff;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+table.datatable tbody td.functions .function_buttons .function_edit a:before {
+    font-size: 1.1rem;
+    content: "\f040";
+}
+
+table.datatable tbody td.functions .function_buttons .function_delete a:before {
+    font-size: 1.2rem;
+    line-height: 30px;
+    content: "\f1f8";
+}
+
+table.datatable tbody td.functions .function_buttons a:hover,
+table.datatable tbody td.functions .function_buttons a:active,
+table.datatable tbody td.functions .function_buttons a:focus {
+    background-color: rgba(68, 68, 68, 0.70);
+}
+
+table.datatable tbody td.functions .function_buttons span {
+    display: none;
+}
+
+table.datatable .viewButtonCell {
+    width: 15px;
+}
+
+table.datatable td.functionCell {
+    width: 150px;
+}
+
+
+/* --------------- Graphs --------------- */
+
+
+/* .dc-chart .axis path, .dc-chart .axis line {
+    stroke: white;
+}
+svg {
+    fill: white;
+} */
+
+#heat_map_chart {
+    height: 260px;
+    background-color: #E0EBEB;
+}
+
+
+/* Glyphicons & Buttons ------------------------------------------------------------------------------------- */
+
+.datatable td button {
+    margin: 3px 2px;
+}
+
+.btn-xs,
+.btn-group-xs>.btn {
+    padding: 4px 6px;
+    font-size: 12px;
+    line-height: 1;
+    border-radius: 3px;
+}
+
+.btn-xs.btn-basic.btn {
+    border: solid 1px #aaa;
+}
+
+.glyphicon-eye-open:before {
+    color: #262626;
+}
+
+.glyphicon-pencil:before {
+    color: #262626;
+}
+
+#checked_out_btn, .summary-checked-out-btn {
+    background-color: wheat;
+}
+
+#disposed_btn, .summary-disposed-btn {
+    color: #be0202;
+}
+
+
+/* --------------- Lightbox --------------- */
+
+.lightbox_bg {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: #333;
+    background-color: rgba(68, 68, 68, 0.70);
+    cursor: pointer;
+}
+
+.lightbox_container {
+    display: none;
+    width: 80%;
+    height: 90%;
+    position: fixed;
+    top: 5%;
+    left: 10%;
+    z-index: 200;
+    background-color: #fff;
+    color: #666;
+    overflow-y: scroll;
+    overflow-x: auto;
+    padding: 50px 0 0 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.lightbox_close {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    top: 45px;
+    right: 45px;
+    font-family: 'FontAwesome', Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 35px;
+    text-align: center;
+    color: #f70;
+    cursor: pointer;
+    border: 2px solid #f70;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 35px;
+}
+
+.lightbox_close:before {
+    content: '\f00d';
+}
+
+.lightbox_close:hover {
+    color: #333;
+    border-color: #333;
+}
+
+.lightbox_content {
+    width: 642px;
+    padding: 0 50px 0 50px;
+}
+
+.lightbox_content h2 {
+    font-weight: 700;
+    font-size: 2rem;
+    line-height: 2rem;
+    color: #f70;
+    margin: 0 0 25px 0;
+}
+
+.lightbox_content .input_container {
+    width: 600px;
+    margin: 0 0 10px 0;
+}
+
+.lightbox_content .input_container:after {
+    clear: both;
+    height: 0;
+    display: block;
+    font-size: 0;
+    line-height: 0;
+    content: ' ';
+}
+
+.lightbox_content .input_container label {
+    width: 200px;
+    float: left;
+    font-size: 1rem;
+    line-height: 32px;
+}
+
+.lightbox_content .input_container label span.required {
+    font-weight: bold;
+    color: #f70;
+}
+
+.lightbox_content .input_container .field_container {
+    width: 400px;
+    float: right;
+    position: relative;
+}
+
+.lightbox_content .input_container .field_container label.error {
+    width: 400px;
+    display: block;
+    background-color: #fff1e6;
+    line-height: 1.4rem;
+    color: #333;
+    padding: 5px 0 6px 10px;
+    border: 1px solid #f70;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    margin: 0 0 5px 0;
+}
+
+.lightbox_content .input_container .field_container label.error.valid {
+    display: none !important;
+}
+
+.lightbox_content .input_container .field_container input {
+    width: 400px;
+    height: 32px;
+    background-color: #f9f9f9;
+    line-height: 30px;
+    color: #666;
+    padding: 0 0 0 10px;
+    border: 1px solid #ccc;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.lightbox_content .input_container .field_container input:focus {
+    background-color: #ffd;
+    color: #000;
+}
+
+.lightbox_content .input_container .field_container.error:after,
+.lightbox_content .input_container .field_container.valid:after {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    bottom: 0;
+    right: -42px;
+    font-family: 'FontAwesome', Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 32px;
+    text-align: center;
+}
+
+.lightbox_content .input_container .field_container.error:after {
+    content: '\f00d';
+    color: #c00;
+}
+
+.lightbox_content .input_container .field_container.valid:after {
+    content: '\f00c';
+    color: #090;
+}
+
+.lightbox_content .button_container {
+    width: 600px;
+    height: 35px;
+    text-align: right;
+    padding: 15px 0 50px 0;
+}
+
+.lightbox_content .button_container button {
+    height: 35px;
+    display: inline-block;
+    background-color: #999;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 0 15px 0 15px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+label.toggle-off {
+    padding: 6px 24px 6px 12px;
+    margin-top: -5px;
+}
+
+label.toggle-on {
+    padding: 6px 24px 6px 12px;
+    margin-top: -5px;
+}
+
+.lightbox_content .button_container button:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+
+</style>
+	<link href="/img/favicon.png" rel="icon">	
+	<link rel="stylesheet" href="/css/fontawesome/css/fontawesome.min.css"> <!-- load fontawesome -->
+	<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css"> <!-- load fontawesome -->
+	
+	
+	<link rel="stylesheet" href="/css/dataTables.checkboxes.css"> <!-- load bootstrap css -->
+	<link href="/css/bootstrap-select.min.css" rel="stylesheet" />
+	
+	<link rel="stylesheet" href="/css/jquery-ui.css" />
+	<link href="/css/dataTables.responsive.css" rel="stylesheet" />
+	<!--link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css" rel="stylesheet" /-->
+	<link rel="stylesheet" href="/css/jquery-confirm.css">
+	<link rel="stylesheet" href="/css/colorbox.css" />
+	
+
+<div class="container body"> 
+
+    <div class="right_col" role="main" style="background: transparent;margin-top:20px">
+        <div class="row top_tiles">
+            <div style="display:none">
+                <button type="button" class="btn btn-success iframe add_record_button" id="createTicket">ADD
+                    <span class="glyphicon glyphicon-plus" style="font-size: 8px; vertical-align: super;"></span>
+                </button>
+               
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div id="dc-table-chart-wrapper">
+
+                <table class="datatable" id="dc-table-chart" style="margin-left:5px">
+                    <thead>
+                        <tr class="header">
+						<th class="header" style="">ID</th>
+                            <th class="header" style="">Username</th>
+                            <th class="header" style="">Role</th>
+                            <th class="header" style="">First Name</th>
+                            <th class="header" style="">Last Name</th>
+							<th class="header" style="">Email</th>
+							<th>Function</th>
+                          
+                        </tr>
+                    </thead>
+                </table>
+
+                <div class="clearfix"></div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/popper.js"></script>
+    
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/jquery-ui.js"></script>    
+    <script src="/js/jquery.colorbox.js"></script>
+		<script src="/js/jquery.js"></script>
+	<script src='/js/bootstrap.js'></script>
+	<script src='/js/bootstrap.min.js'></script>
+	
+	<script src='/js/bootstrap-select.min.js'></script>	
+	<script src='/js/bootstrap-multiselect1.js'></script>
+	<script src="/js/jquery.validate.min.js"></script>
+	<script src='/js/jquery.dataTables.min.js'></script>
+	<script src="/js/dataTables.buttons.min.js"></script>
+	<script src="/js/dataTables.responsive.min.js"></script>	
+		
+	<script src="/js/jquery.highlight.js"></script>
+	<script src="/js/jquery-ui.js"></script>
+	<script src="/js/jquery-confirm.js"></script>
+	<script src="/js/jquery.colorbox.js"></script>
+	<script src="/js/myPopupWin.js"></script>
+<script>
+    let clicked_row_id = null;
+    let clicked_row_data = null;
+    function highlightClickedRow() {
+        if (clicked_row_id != null) {
+            let rows = $('#dc-table-chart tbody tr');
+            rows[clicked_row_id].click();
+        }
+    }
+var data;
+console.log(data)
+    $(document).ready(function () {
+
+   
+        $("#createTicket").on('click', function (event) {
+            myPopupWin('user_request_form');
+        });
+
+        // MAIN TABLE
+        var table = $('#dc-table-chart').DataTable({
+             "aoColumnDefs": [
+                { "bSortable": false, "aTargets": [-1] }
+            ],
+            "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+            "oLanguage": {
+                "oPaginate": {
+                    "sFirst": "",
+                    "sPrevious": "",
+                    "sNext": "",
+                    "sLast": "",
+                },
+                "sLengthMenu": "Records per page: _MENU_",
+                "sInfo": "Total of _TOTAL_ records (showing _START_ to _END_)",
+                "sInfoFiltered": "(filtered from _MAX_ total records)"
+            },
+               ajax: './api/data',
+			   
+			 sAjaxDataProp: "",
+           "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+                console.log(aData);
+                
+
+                return nRow;
+            },
+                
+			columns: [
+			{ data: 'id' },
+        { data: 'username' },
+        { data: 'role' },
+        { data: 'first_name' },
+        { data: 'last_name' },
+		{ data: 'email' },
+		{
+                    data: null,
+                    sortable: false,
+                    //responsivePriority: 2,
+                   
+                    defaultContent:
+                        '<button type="button" id="editButton" class="iframe btn btn-basic btn-xs" data-toggle="tooltip" data-placement="top" title="Edit" style="display: nne; margin: 2px 2px 2px 2px;"><span class="glyphicon glyphicon-pencil"></span></button>'
+                },
+                
+                
+            ]
+        });
+console.log(data);
+        // MAIN TABLE LISTENERS
+
+        $('#dc-table-chart tbody').on('click', '#editButton', function () {
+            var data = table.row($(this).parents('tr')).data();
+            var windowLocation = 'user_edit/' + data.id;
+
+            myPopupWin(windowLocation, () => table.ajax.reload(highlightClickedRow, false));
+        });
+
+        // SECONDARY TABLE
+
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            $('#dc-table-chart_info').hide();
+            $('#dc-table-chart_length').hide();
+        }
+    });
+
+</script>

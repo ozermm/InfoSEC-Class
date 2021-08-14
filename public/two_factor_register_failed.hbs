@@ -1,0 +1,81 @@
+<html>
+<style>
+    option {
+        background-color: white;
+
+    }
+
+    .styled-select {
+        height: 25px;
+        border-radius: 4px;
+        overflow: hidden;
+        width: auto;
+    }
+
+    html {
+        font-size: 14px;
+        overflow-y: scroll;
+        overflow-x: auto;
+    }
+
+    body {
+        margin-top: 80px;
+        font-family: 'Oxygen', Arial, Helvetica, sans-serif;
+        font-size: 1rem;
+        text-align: left;
+        color: #666;
+        background: #333333 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAB9JREFUeNpi/P//PwM6YGLAAuCCmpqacC2MRGsHCDAA+fIHfeQbO8kAAAAASUVORK5CYII=);
+    }
+
+    h3 {
+        text-align: center;
+        font-style: normal;
+        font-size: 20px;
+        font-family: "Helvetica";
+        margin-bottom: 2em;
+    }
+
+    @media print {
+
+        .no-print,
+        .no-print * {
+            display: none !important;
+        }
+    }
+</style>
+
+<body>
+    <link rel="stylesheet" href="../css/jquery-confirm.min.css">
+    <div class="container" style="width:80%">
+
+        <div class="col-sm-6 col-sm-12 col-xs-12 col-sm-offset-3">
+
+            <h3 style="color:whitesmoke">Two Factor Authentication
+                (2FA) failed due to consecutive tries, please contact your supervisor to continue.</h3>
+
+            <!-- show any messages that come back with authentication -->
+            {{#if hasErrors}}
+            <div class="alert alert-danger">
+                {{# each messages }}
+                <p>{{this}}</p>
+                {{/each}}
+            </div>
+            {{/if}}
+
+
+            <button type="button" style="border-radius:15px; background-color:transparent; font-size:20px;"
+                class="btn btn-lg no-print"><a href="/logout"><i class="fa fa-home" aria-hidden="true"> Home</i></a></button>
+
+            <hr>
+            <!--
+        <p>Already have an account? <a href="/login">Login</a></p>
+        <p>Or go <a href="/">home</a>.</p>
+-->
+        </div>
+
+    </div>
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script src="../js/jquery-confirm.js"></script>
+</body>
+
+</html>
